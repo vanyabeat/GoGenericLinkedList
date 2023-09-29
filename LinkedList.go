@@ -30,17 +30,22 @@ type LinkedList[T any] struct {
 	Size uint64
 }
 
-type IteratorLinkedList[T any] struct {
-	current *listNode[T]
-	end     *listNode[T]
-}
-
 func newListNode[T any]() *listNode[T] {
 	return &listNode[T]{next: nil, prev: nil, Value: *new(T)}
 }
 
 func newListNodeValueNextPrev[T any](p *listNode[T], v T, n *listNode[T]) *listNode[T] {
 	return &listNode[T]{next: n, prev: p, Value: v}
+}
+
+func NewLinkedList[T any]() *LinkedList[T] {
+	var list = new(LinkedList[T])
+	list.Size = 0
+	list.head = newListNode[T]()
+	list.tail = newListNode[T]()
+	list.head.next = list.tail
+	list.tail.prev = list.head
+	return list
 }
 
 func (reciever *LinkedList[T]) Empty() (result bool) {
@@ -90,14 +95,4 @@ func (reciever *LinkedList[T]) PushFront(value T) {
 	reciever.head.next = node
 	reciever.Size += 1
 	return
-}
-
-func NewLinkedList[T any]() *LinkedList[T] {
-	var list = new(LinkedList[T])
-	list.Size = 0
-	list.head = newListNode[T]()
-	list.tail = newListNode[T]()
-	list.head.next = list.tail
-	list.tail.prev = list.head
-	return list
 }
