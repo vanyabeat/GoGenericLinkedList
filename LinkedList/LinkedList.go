@@ -109,3 +109,27 @@ func (reciever *LinkedList[T]) Iterate() func() (T, bool) {
 		return value, true
 	}
 }
+
+func (reciever *LinkedList[T]) At(index int) *T {
+	if index < 0 || index >= int(reciever.Size) {
+		panic("Index out of range")
+	} else {
+		var begin = reciever.head.next
+		for i := 0; i < index; i++ {
+			begin = begin.next
+		}
+		return &begin.Value
+	}
+}
+
+func (reciever *LinkedList[T]) Index(index int) T {
+	if index < 0 || index >= int(reciever.Size) {
+		panic("Index out of range")
+	} else {
+		var begin = reciever.head.next
+		for i := 0; i < index; i++ {
+			begin = begin.next
+		}
+		return begin.Value
+	}
+}

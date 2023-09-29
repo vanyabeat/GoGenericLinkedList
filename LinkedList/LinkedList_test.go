@@ -113,3 +113,42 @@ func TestLinkedList_PopFront(t *testing.T) {
 		}
 	}
 }
+
+func TestLinkedList_PopFrontEmpty(t *testing.T) {
+	list := NewLinkedList[int]()
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fatalf("The code did not panic")
+		}
+	}()
+	list.PopFront()
+}
+
+func TestLinkedList_PopBackEmpty(t *testing.T) {
+	list := NewLinkedList[int]()
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fatalf("The code did not panic")
+		}
+	}()
+	list.PopBack()
+}
+
+func TestLinkedList_At(t *testing.T) {
+	list := NewLinkedList[int]()
+	list.PushFront(1)
+	*list.At(0) = 666
+	if list.head.next.Value != 666 {
+		t.Fatalf("list.head.next.Value != 1")
+	}
+}
+
+func TestLinkedList_AtPanic(t *testing.T) {
+	list := NewLinkedList[int]()
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fatalf("The code did not panic")
+		}
+	}()
+	list.At(0)
+}
