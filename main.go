@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/vanyabeat/GoGenericLinkedList/LinkedList"
+	"github.com/vanyabeat/GoLinkedList/LinkedList"
 )
 
 func main() {

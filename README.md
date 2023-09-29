@@ -1,11 +1,11 @@
-# GoGenericLinkedList
+# GoLinkedList
 Generic LinkedList implementation for go in C++ style
 Bidirectional linked list with push/pop front/back operations
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/vanyabeat/GoGenericLinkedList)](https://goreportcard.com/report/github.com/vanyabeat/GoGenericLinkedList)
+[![Go Report Card](https://goreportcard.com/badge/github.com/vanyabeat/GoLinkedList)](https://goreportcard.com/report/github.com/vanyabeat/GoLinkedList)
 
-[![Tests](https://github.com/vanyabeat/GoGenericLinkedList/actions/workflows/Tests.yml/badge.svg)](https://github.com/vanyabeat/GoGenericLinkedList/actions/workflows/Tests.yml)
-[![codecov](https://codecov.io/gh/vanyabeat/GoGenericLinkedList/graph/badge.svg?token=6MXG5KLBGF)](https://codecov.io/gh/vanyabeat/GoGenericLinkedList)
+[![Tests](https://github.com/vanyabeat/GoLinkedList/actions/workflows/Tests.yml/badge.svg)](https://github.com/vanyabeat/GoLinkedList/actions/workflows/Tests.yml)
+[![codecov](https://codecov.io/gh/vanyabeat/GoLinkedList/graph/badge.svg?token=6MXG5KLBGF)](https://codecov.io/gh/vanyabeat/GoLinkedList)
 
 ## Usage
 
@@ -14,7 +14,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/vanyabeat/GoGenericLinkedList/LinkedList"
+	"github.com/vanyabeat/GoLinkedList/LinkedList"
 )
 
 func main() {
