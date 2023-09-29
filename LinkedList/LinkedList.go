@@ -1,5 +1,7 @@
 package LinkedList
 
+import "fmt"
+
 // listNode is a node of a doubly-linked list.
 type listNode[T any] struct {
 	// pointer to next node
@@ -132,4 +134,18 @@ func (reciever *LinkedList[T]) Index(index int) T {
 		}
 		return begin.Value
 	}
+}
+
+func (reciever *LinkedList[T]) String() string {
+	var result = "["
+	var begin = reciever.head.next
+	for begin != reciever.tail {
+		result += fmt.Sprintf("%v", begin.Value)
+		if begin.next != reciever.tail {
+			result += " "
+		}
+		begin = begin.next
+	}
+	result += "]"
+	return result
 }
