@@ -30,6 +30,7 @@ type LinkedList[T any] struct {
 	Size uint64
 }
 
+// newListNode returns a new node with next and prev pointers set to nil and Value set to default value.
 func newListNode[T any]() *listNode[T] {
 	return &listNode[T]{next: nil, prev: nil, Value: *new(T)}
 }
@@ -95,4 +96,16 @@ func (reciever *LinkedList[T]) PushFront(value T) {
 	reciever.head.next = node
 	reciever.Size += 1
 	return
+}
+
+func (reciever *LinkedList[T]) Iterate() func() (T, bool) {
+	var begin = reciever.head.next
+	return func() (T, bool) {
+		var value = begin.Value
+		if begin == reciever.tail {
+			return *new(T), false
+		}
+		begin = begin.next
+		return value, true
+	}
 }
