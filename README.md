@@ -1,5 +1,8 @@
 # GoGenericLinkedList
 Generic LinkedList implementation for go in C++ style
+Bidirectional linked list with push/pop front/back operations
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/vanyabeat/GoGenericLinkedList)](https://goreportcard.com/report/github.com/vanyabeat/GoGenericLinkedList)
 
 [![Tests](https://github.com/vanyabeat/GoGenericLinkedList/actions/workflows/Tests.yml/badge.svg)](https://github.com/vanyabeat/GoGenericLinkedList/actions/workflows/Tests.yml)
 [![codecov](https://codecov.io/gh/vanyabeat/GoGenericLinkedList/graph/badge.svg?token=6MXG5KLBGF)](https://codecov.io/gh/vanyabeat/GoGenericLinkedList)

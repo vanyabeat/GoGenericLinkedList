@@ -51,60 +51,60 @@ func NewLinkedList[T any]() *LinkedList[T] {
 	return list
 }
 
-func (reciever *LinkedList[T]) Empty() (result bool) {
-	result = reciever.Size == 0
+func (l *LinkedList[T]) Empty() (result bool) {
+	result = l.Size == 0
 	return
 }
 
-func (reciever *LinkedList[T]) Len() int {
-	return int(reciever.Size)
+func (l *LinkedList[T]) Len() int {
+	return int(l.Size)
 }
 
-func (reciever *LinkedList[T]) PushBack(value T) {
-	var node = newListNodeValueNextPrev[T](reciever.tail.prev, value, reciever.tail)
-	reciever.tail.prev.next = node
-	reciever.tail.prev = node
-	reciever.Size += 1
+func (l *LinkedList[T]) PushBack(value T) {
+	var node = newListNodeValueNextPrev[T](l.tail.prev, value, l.tail)
+	l.tail.prev.next = node
+	l.tail.prev = node
+	l.Size += 1
 	return
 }
 
-func (reciever *LinkedList[T]) PopBack() (result T) {
-	if reciever.Empty() {
+func (l *LinkedList[T]) PopBack() (result T) {
+	if l.Empty() {
 		panic("Empty list")
 	}
-	var node = reciever.tail.prev
+	var node = l.tail.prev
 	result = node.Value
-	node.prev.next = reciever.tail
-	reciever.tail.prev = node.prev
-	reciever.Size -= 1
+	node.prev.next = l.tail
+	l.tail.prev = node.prev
+	l.Size -= 1
 	return
 }
 
-func (reciever *LinkedList[T]) PopFront() (result T) {
-	if reciever.Empty() {
+func (l *LinkedList[T]) PopFront() (result T) {
+	if l.Empty() {
 		panic("Empty list")
 	}
-	var node = reciever.head.next
+	var node = l.head.next
 	result = node.Value
-	node.next.prev = reciever.head
-	reciever.head.next = node.next
-	reciever.Size -= 1
+	node.next.prev = l.head
+	l.head.next = node.next
+	l.Size -= 1
 	return
 }
 
-func (reciever *LinkedList[T]) PushFront(value T) {
-	var node = newListNodeValueNextPrev[T](reciever.head, value, reciever.head.next)
-	reciever.head.next.prev = node
-	reciever.head.next = node
-	reciever.Size += 1
+func (l *LinkedList[T]) PushFront(value T) {
+	var node = newListNodeValueNextPrev[T](l.head, value, l.head.next)
+	l.head.next.prev = node
+	l.head.next = node
+	l.Size += 1
 	return
 }
 
-func (reciever *LinkedList[T]) Iterate() func() (T, bool) {
-	var begin = reciever.head.next
+func (l *LinkedList[T]) Iterate() func() (T, bool) {
+	var begin = l.head.next
 	return func() (T, bool) {
 		var value = begin.Value
-		if begin == reciever.tail {
+		if begin == l.tail {
 			return *new(T), false
 		}
 		begin = begin.next
@@ -112,11 +112,11 @@ func (reciever *LinkedList[T]) Iterate() func() (T, bool) {
 	}
 }
 
-func (reciever *LinkedList[T]) At(index int) *T {
-	if index < 0 || index >= int(reciever.Size) {
+func (l *LinkedList[T]) At(index int) *T {
+	if index < 0 || index >= int(l.Size) {
 		panic("Index out of range")
 	} else {
-		var begin = reciever.head.next
+		var begin = l.head.next
 		for i := 0; i < index; i++ {
 			begin = begin.next
 		}
@@ -124,11 +124,11 @@ func (reciever *LinkedList[T]) At(index int) *T {
 	}
 }
 
-func (reciever *LinkedList[T]) Index(index int) T {
-	if index < 0 || index >= int(reciever.Size) {
+func (l *LinkedList[T]) Index(index int) T {
+	if index < 0 || index >= int(l.Size) {
 		panic("Index out of range")
 	} else {
-		var begin = reciever.head.next
+		var begin = l.head.next
 		for i := 0; i < index; i++ {
 			begin = begin.next
 		}
@@ -136,12 +136,12 @@ func (reciever *LinkedList[T]) Index(index int) T {
 	}
 }
 
-func (reciever *LinkedList[T]) String() string {
+func (l *LinkedList[T]) String() string {
 	var result = "["
-	var begin = reciever.head.next
-	for begin != reciever.tail {
+	var begin = l.head.next
+	for begin != l.tail {
 		result += fmt.Sprintf("%v", begin.Value)
-		if begin.next != reciever.tail {
+		if begin.next != l.tail {
 			result += " "
 		}
 		begin = begin.next
