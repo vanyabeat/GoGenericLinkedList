@@ -67,3 +67,13 @@ list.PushBack(2)
 fmt.Println(list.PopFront()) // 1
 fmt.Println(list) // [2]
 ```
+
+## Slice
+```go
+var list = LinkedList.NewLinkedList[int]()
+list.PushBack(1)
+list.PushBack(2)
+list.PushBack(3)
+list.PushBack(4)
+var slc = list.Slice()
+```

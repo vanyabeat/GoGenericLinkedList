@@ -152,3 +152,17 @@ func TestLinkedList_AtPanic(t *testing.T) {
 	}()
 	list.At(0)
 }
+
+func TestLinkedList_Slice(t *testing.T) {
+	list := NewLinkedList[int]()
+	var size int = 1000
+	for i := 0; i < size; i++ {
+		list.PushBack(i)
+	}
+	var slice = list.Slice()
+	for i := 0; i < size; i++ {
+		if slice[i] != i {
+			t.Fatalf("slice[i] != i")
+		}
+	}
+}

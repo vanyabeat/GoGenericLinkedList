@@ -149,3 +149,13 @@ func (l *LinkedList[T]) String() string {
 	result += "]"
 	return result
 }
+
+func (l *LinkedList[T]) Slice() []T {
+	var result = make([]T, l.Size)
+	var begin = l.head.next
+	for i := 0; i < int(l.Size); i++ {
+		result[i] = begin.Value
+		begin = begin.next
+	}
+	return result
+}
